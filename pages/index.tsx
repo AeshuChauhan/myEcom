@@ -4,6 +4,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Listting from '@/components/listingSection/Listting'
 import CardContainer from '@/components/ProductCard/CardContainer'
 import HorizontalCard from '@/components/ProductCard/HorizontalCard'
+import Testimonial from '@/components/Testimonial/Testimonial'
+import BasicTestimonial from '@/components/Testimonial/BasicTestimonial'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -17,6 +19,7 @@ export default function Example() {
 
   return (
     <div className="bg-white">
+      
       <div className="mx-4">
       <HorizontalCard/>
 
@@ -25,6 +28,13 @@ export default function Example() {
         <h4 className="text-indigo-500 text-xl font-bold mb-3 mt-5">List Section</h4>
         
         <Listting />
+
+
+
+
+
+        <Testimonial />
+        <BasicTestimonial/>
       </div>
     </div>
   )
