@@ -1,14 +1,31 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { useState } from 'react'
+import { Dialog } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Listting from '@/components/listingSection/Listting'
+import CardContainer from '@/components/ProductCard/CardContainer'
+import HorizontalCard from '@/components/ProductCard/HorizontalCard'
 
-const inter = Inter({ subsets: ['latin'] })
+const navigation = [
+  { name: 'Product', href: '#' },
+  { name: 'Features', href: '#' },
+  { name: 'Marketplace', href: '#' },
+  { name: 'Company', href: '#' },
+]
 
-export default function Home() {
+export default function Example() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <main
-      className={`min-h-screen `}
-    >
-      {/* <Listting/>  */}
-    </main>
+    <div className="bg-white">
+      <div className="mx-4">
+      <HorizontalCard/>
+
+        <h4 className="text-indigo-500 text-xl font-bold mb-3">Cards Section</h4>
+        <CardContainer />
+        <h4 className="text-indigo-500 text-xl font-bold mb-3 mt-5">List Section</h4>
+        
+        <Listting />
+      </div>
+    </div>
   )
 }
