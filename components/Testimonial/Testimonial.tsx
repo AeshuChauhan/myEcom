@@ -15,7 +15,7 @@ export default function Testimonial() {
           <div className="flex">
             <div className="relative mx-4 -mt-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
               data-te-ripple-init data-te-ripple-color="light">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/002.webp" className="w-full" />
+              <img src="https://media.istockphoto.com/id/1141906552/photo/indian-hindu-couple-holding-each-other-hands-during-their-marriage-symbolising-love-and.jpg?s=2048x2048&w=is&k=20&c=sGhmDUTQ4fCVNb1nvxYYNr1WczJwjqaGQwGFzXBHm3w=" className="w-full" />
               <a href="#!">
                 <div
                   className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
@@ -44,7 +44,7 @@ export default function Testimonial() {
           <div className="flex">
             <div className="relative mx-4 -mt-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
               data-te-ripple-init data-te-ripple-color="light">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/people/066.webp" className="w-full" />
+              <img src="https://images.pexels.com/photos/5005252/pexels-photo-5005252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="w-full" />
               <a href="#!">
                 <div
                   className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
@@ -73,7 +73,7 @@ export default function Testimonial() {
           <div className="flex">
             <div className="relative mx-4 -mt-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
               data-te-ripple-init data-te-ripple-color="light">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/people/191.webp" className="w-full" />
+              <img src="https://images.pexels.com/photos/3352398/pexels-photo-3352398.jpeg?auto=compress&cs=tinysrgb&w=600" className="w-full" />
               <a href="#!">
                 <div
                   className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
