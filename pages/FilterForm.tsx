@@ -36,7 +36,6 @@ export default function FilterForm() {
     setRatingRange([1, 5]);
     setSelectedCity('All Cities');
     setSelectedFacilities([]);
-    // Add logic to clear other filters if needed
   };
 
   const FACILITIES = ['Wi-Fi', 'Parking', 'Pool', 'Gym', 'Restaurant'];
@@ -98,9 +97,9 @@ export default function FilterForm() {
             variant="outlined"
           >
             <MenuItem value="All Cities">All Cities</MenuItem>
-            <MenuItem value="City 1">City 1</MenuItem>
-            <MenuItem value="City 2">City 2</MenuItem>
-            <MenuItem value="City 3">City 3</MenuItem>
+            <MenuItem value="City 1">Noida </MenuItem>
+            <MenuItem value="City 2">Gurugram</MenuItem>
+            <MenuItem value="City 3">Delhi</MenuItem>
           </TextField>
         </Box>
 

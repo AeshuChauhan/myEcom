@@ -26,11 +26,9 @@ export default function CardContainer() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={4}>
-        {/* Filter form goes here */}
         <FilterForm />
       </Grid>
       <Grid item xs={12} md={8}>
-        {/* Grid content */}
         <Grid container spacing={2}>
           {(urls || []).map((url, i) => (
             <Grid item xs={12} md={4} key={i * Math.random()}>
