@@ -1,11 +1,38 @@
-import React, {useState} from 'react'
+import axios from 'axios';
+import React, {useState, useEffect} from 'react'
+
 
 export default function HorizontalCard() {
 
   const [searchNearby, setSearchNearby] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showMandapList, setShowMandapList] = useState(false);
+ 
+  useEffect(() => {
+    if(searchResult.length > 0 && showMandapList){
+      window.location.href = 'mandapList';
+    }
 
-  const handleSearch = () => {
-    console.log('Searching nearby for: ', searchNearby);
+  }, [searchResult, showMandapList]);
+
+  const handleSearch = async () => {
+    console.log('Button clicked');
+    setLoading(true);
+
+    axios.get('https://jsonplaceholder.typicode.com/todos').then((response) => {
+      setSearchResult(response.data);
+      console.log(response);
+      // setPost(response.data);
+      setLoading(false);
+      setShowMandapList(true);
+    
+      // openMandapList();
+    });
+
+    
+    // setLoading(false);
+
   };
 
   return (
@@ -29,12 +56,15 @@ export default function HorizontalCard() {
               onChange={(e) => setSearchNearby(e.target.value)}
             />
             
+            
             <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" onClick={handleSearch}>Search</button>
-    
+            
           </div>
         </div>
         <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-1/2 md:rounded-none md:rounded-l-lg" src="https://images.pexels.com/photos/17301141/pexels-photo-17301141/free-photo-of-close-up-of-couple-showing-rings-on-hands.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
     </a>
+
+
     <div className="my-8">
     
       <div className="flex flex-wrap justify-center">

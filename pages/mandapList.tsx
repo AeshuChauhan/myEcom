@@ -1,6 +1,4 @@
 import React from 'react'
-// import ViewAllListingButton from '@/components/listingSection/ViewAllListingsButton'
-import MandapCard from '@/components/ProductCard/MandapCardContainer'
 import MandapCardContainer from '@/components/ProductCard/MandapCardContainer'
 
 export default function mandapList() {

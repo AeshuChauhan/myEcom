@@ -13,31 +13,35 @@ export default function Copyright() {
         display: 'grid',
         gap: 20,
         gridTemplateColumns: '.5fr 2.5fr 2.5fr',
-        alignItems: 'center', 
+        alignItems: 'center',
+        '@media (max-width: 768px)': {
+          gridTemplateColumns: '1fr',
+          textAlign: 'center',
+        },
       }}
     >
       <Box sx={{ padding: '0 20px' }}>
-        <Typography 
+        <Typography
           variant="h4"
           fontWeight="bold"
           align="left"
           sx={{
-            fontFamily: 'Arial, sans-serif', 
-            fontSize: '24px', 
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '24px',
           }}
         >
           Brand Icon
         </Typography>
       </Box>
-      
+
       <Box sx={{ padding: '0 20px' }}>
-        <Typography 
+        <Typography
           variant="h4"
           fontWeight="bold"
           align="left"
           sx={{
-            fontFamily: 'Arial, sans-serif', 
-            fontSize: '24px', 
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '24px',
           }}
         >
           World's leading chain of hotels and homes
@@ -45,13 +49,17 @@ export default function Copyright() {
       </Box>
       <Box sx={{ padding: '0 20px' }}>
         <Typography
-         variant="h4"
-         fontWeight="bold"
-         align="right"
-         sx={{
-          fontFamily: 'Arial, sans-serif', 
-          fontSize: '24px', 
-        }}
+          variant="h4"
+          fontWeight="bold"
+          align="right"
+          sx={{
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '24px',
+            '@media (max-width: 768px)': {
+              textAlign: 'center',
+              marginTop: '20px', 
+            },
+          }}
         >
           Join our network and grow your business!
         </Typography>
