@@ -1,30 +1,25 @@
 import { Grid, Paper, Typography, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Icon, Button, FormControlLabel, Checkbox, Tabs, Tab, Box } from '@mui/material';
 import Slider from 'react-slick';
 import React, {useState, useEffect} from 'react';
-// import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
 import TextField from '@mui/material/TextField';
-// import MenuItem from '@material-ui/core/MenuItem';
 import MenuItem from '@mui/material/MenuItem';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
-
 import { ImageList, ImageListItem } from '@mui/material';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import ReviewsIcon from '@mui/icons-material/Reviews';
-
-
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { BuildingStorefrontIcon, CameraIcon, PhoneIcon, PhotoIcon } from '@heroicons/react/24/outline';
-import { PersonPinCircleOutlined } from '@mui/icons-material';
-
-
-// const taxRate = 0.18;
+import { useRouter } from 'next/router';
+import { RoomServiceOutlined } from '@mui/icons-material';
+import RoomIcon from '@mui/icons-material/Room';
 export default function Details() {
+
+  const router = useRouter();
+  const { title, description, location, price, djAvailable, alcoholAvailable, Contact, url } = router.query;
+  const djAvailableBool = djAvailable ? JSON.parse(djAvailable) : false;
+  const alcoholAvailableBool = alcoholAvailable ? JSON.parse(alcoholAvailable) : false;
 
     const imageUrls = [
         'https://cdn.venuelook.com/uploads/space_36435/1689661504_595x400.png',
@@ -37,7 +32,6 @@ export default function Details() {
       ];
 
       const [ currentSlide, setCurrentSlide] = useState(0);
-    //   const [imageLoading, setImageLoading] = useState(true);
 
     const settings = {
         dots: false,
@@ -63,7 +57,7 @@ export default function Details() {
       const ContactNumber = '+91-9876543210';
 
       const handleContactClick = () => {
-        console.log('Initiate call to:', contactNumber);
+        console.log('Initiate call to:', Contact);
       };
 
       const [weddingType, setWeddingType] = useState('');
@@ -109,15 +103,29 @@ export default function Details() {
       {/* Left Column */}
       <Grid item xs={12} sm={6}  sx={{marginLeft:15}} >
         <Paper>
-            <Slider {...settings}>
+            {/* <Slider {...settings}>
                 {imageUrls.map((url, index) => (
                     <div key={index}>
-                        <img src={url} alt={`Image ${index+1}`} style={{width:'100%', height:'auto'}} />
+                        <img src={url} alt={`url ${index+1}`} style={{width:'100%', height:'auto'}} />
                     </div>
                 ))}
+            </Slider> */}
+            <Slider {...settings}>
+              {[url].map((url, index) => (
+                <div key={index}>
+                  <img src={url} alt={`url ${index + 1}`} style={{ width: '100%', height: 'auto' }} />
+                </div>
+              ))}
             </Slider>
-
+            
         </Paper>
+        {/* <span>
+          <button className="header-button1" style={{ fontSize: "15px", fontWeight: "bold", margin: "10px", alignSelf: 'center', paddingLeft:"10px", width:"95%" }}>
+          🛒Add to Cart
+          </button>
+        </span> */}
+        
+
         <Grid container spacing={0} sx={{marginTop:2}}>
 
           
@@ -128,14 +136,21 @@ export default function Details() {
                 <Grid container spacing={3}>
                   {/* Left Section */}
                   <Grid item xs={6}>
-                    <Typography  style={{textAlign:"left", paddingRight:"20px", paddingLeft:"15px", fontSize:"30px", marginTop:"0"}}>
-                    The Florence Banquet
-
+                    <Typography style={{ textAlign: "left", paddingRight: "20px", paddingLeft: "15px", fontSize: "30px", marginTop: "0", fontWeight:"bold" }}>
+                      {title}
                     </Typography>
 
-                    <span style={{color:'gray', paddingLeft:"15px"}}> Space: Ground Floor</span><br/>
-                    <span style={{color:'gray', paddingLeft:"15px"}}> Mayapuri, Delhi (📍view on map)</span><br/>
-                    <span style={{color:'gray', paddingLeft:"15px"}}> C-146,Mayapuri Industrial Area, Delhi,110064</span><br/>
+                    {location && (
+                    <div className="flex items-center mt-2">
+                      <RoomIcon className="text-red-500" style={{ marginRight: '8px' }} />
+                      <Typography variant="body2" color="textSecondary">{location}</Typography>
+                    </div>
+                  )}
+
+                   
+                   {description && (
+                      <Typography className="text-gray-600 mt-4 pl-4">{description}</Typography>
+                    )}
 
                   </Grid>
 
@@ -150,6 +165,7 @@ export default function Details() {
                     👍Get Best Deal
                     </button>
                   </span>
+                  
 
                   
                   </Typography>
@@ -193,12 +209,12 @@ export default function Details() {
           <Paper>
             <Box border={2} borderColor="#ddd" p={2}>
             <Typography variant="h6" style={{padding:"1px", fontWeight:"bold"}}>
-            🎥 Photos of Ground Floor at The Florence Banquet
+            🎥 Photos of Ground Floor at {title}
             </Typography>
             </Box>
 
             <ImageList sx={{ width: 736, height: 500, gap: 16 }} cols={3} rowHeight={200}>
-              {imageUrls.map((imageUrl, index) => (
+              {[url].map((imageUrl, index) => (
                 <ImageListItem key={index}>
                   <img
                     srcSet={`${imageUrl}?w=400&h=400&fit=crop&auto=format&dpr=2 2x`}
@@ -228,7 +244,7 @@ export default function Details() {
               <TableRow>
                 <TableCell>
                   <span style={{fontWeight:'bold'}}>Veg Price</span><br/>
-                  <span >₹ 1300 / Pax+GST</span>
+                  <span>{price && `₹ ${price} / Pax+GST`}</span>
                  
                 </TableCell>
                 <TableCell>
@@ -242,7 +258,7 @@ export default function Details() {
               <TableRow>
                 <TableCell>
                   <span style={{fontWeight:'bold'}}> NonVeg Price</span><br/>
-                  <span >₹ 1400 / Pax+GST</span>
+                  <span>{price && `₹ ${(+price + 250)} / Pax+GST`}</span>
                  
                 </TableCell>
                 <TableCell>
@@ -284,11 +300,11 @@ export default function Details() {
 
         {/* Right side: Yes */}
         <Grid item xs={6} container direction="column" justifyContent="flex-end">
-          <Typography  align="right" style={{ fontSize:"17px", marginRight: '16px', fontStyle:"italic", color:"red" }}>
-            Yes
+          <Typography align="right" style={{ fontSize: "17px", marginRight: '16px', fontStyle: "italic", color: "red" }}>
+             {djAvailableBool ? 'Yes' : 'No'}
           </Typography>
-          <Typography  align="right" style={{ fontSize:"17px", marginRight: '16px', fontStyle:"italic", color:"red" }}>
-            Yes
+          <Typography align="right" style={{ fontSize: "17px", marginRight: '16px', fontStyle: "italic", color: "red" }}>
+             {alcoholAvailableBool ? 'Yes' : 'No'}
           </Typography>
         </Grid>
       </Grid>
@@ -298,11 +314,11 @@ export default function Details() {
 
       <Paper elevation={2} style={{ marginTop: '20px', padding: '20px' }}>
         <Typography style={{fontWeight:"bold", fontSize:"20px"}}>
-        📞Call to The Florence Banquet
+        📞Call to {title}
         </Typography>
       {/* </Paper> */}
       <Typography  style={{ marginTop: '10px', fontSize:"20px", fontStyle:"-moz-initial"}}>
-       <a href={`tel:${ContactNumber}`} onClick={handleContactClick}>{ContactNumber}</a>
+       <a href={`tel:${ContactNumber}`} onClick={handleContactClick}>+91-{Contact}</a>
       </Typography>
       </Paper>
       
@@ -313,7 +329,7 @@ export default function Details() {
         
       </Typography>
       <Typography style={{textAlign:"center", color:"gray"}}>
-      <span style={{textAlign:"center"}}>The Florence Benquet</span>
+      <span style={{textAlign:"center"}}>{title}</span>
       </Typography>
       <form>
         <TextField

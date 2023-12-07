@@ -5,6 +5,7 @@ import { header_desktopCss } from "./headerCss";
 export default function Header() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
+  const [cartVisible, setCartVisible] = useState(false);
 
   useEffect(() => {
     const userData = sessionStorage.getItem("userData");
@@ -12,12 +13,14 @@ export default function Header() {
       const parsedUserData = JSON.parse(userData);
       setLoggedIn(true);
       setUserName(parsedUserData.firstName);
+      setCartVisible(true); 
     } else {
       setLoggedIn(false);
       setUserName("");
+      setCartVisible(false);
     }
   }, [loggedIn, userName]);
-
+  
   return (
     <header>
       <style
@@ -51,17 +54,23 @@ export default function Header() {
             </Link>
           </li>
           {loggedIn && (
-            <li>
-              <Link href="/mandap" style={{ fontSize: "18px", fontWeight: "bold" }}>
-                Add new Mandap
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link href="/mandap" style={{ fontSize: "18px", fontWeight: "bold" }}>
+                  Add new Mandap
+                </Link>
+              </li>
+              <li>
+                <Link href="/cart" style={{ fontSize: "18px", fontWeight: "bold" }}>
+                  Cart
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </nav>
       <div>
         {loggedIn ? (
-          
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <p style={{ fontSize: "18px", fontWeight: "bold", marginRight: '10px' }}>Welcome, {userName}!</p>
             <button
@@ -70,6 +79,7 @@ export default function Header() {
               onClick={() => {
                 setLoggedIn(false);
                 setUserName("");
+                setCartVisible(false); 
                 sessionStorage.removeItem("userData");
               }}
             >
@@ -77,7 +87,6 @@ export default function Header() {
             </button>
           </div>
         ) : (
-          
           <>
             <Link href="/Login">
               <button className="header-button" style={{ fontSize: "18px", fontWeight: "bold" }}>
